@@ -13,6 +13,7 @@ import useSize from "./useSize";
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import InfoIcon from '@mui/icons-material/Info';
+import { Padding } from '@mui/icons-material';
 
 
 
@@ -44,7 +45,9 @@ function App() {
   const dtccFlatFeeRevenue = (dtccFlatFee * amountStaked);
   const dtccVariableFeeRevenue = (dtccVariableFee * amountStaked);
   const totalFlatFeeRevenue = (swiftFlatFeeRevenue + dtccFlatFeeRevenue);
+  const totalFlatFeeRevenuInLink = (totalFlatFeeRevenue / linkPrice);
   const totalVariableFeeRevenue = (swiftVariableFeeRevenue + dtccVariableFeeRevenue);
+  const totalVariableFeeRevenueInLink = (totalVariableFeeRevenue / linkPrice);
   const flatFeeRewardRate = (swiftFlatFee + dtccFlatFee) / linkPrice * 100;
   const variableFeeRewardRate = (swiftVariableFee + dtccVariableFee) / linkPrice * 100;
   const ffAnnualStakingRewards = stakedSupplyNum * flatFeeRewardRate / 100;
@@ -58,7 +61,7 @@ function App() {
     if (vbfAnnualStakingRewards < remainingCirculatingSupply) {
       setVbfAnnualResult(vbfAnnualStakingRewards.toLocaleString() + " LINK");
     } else {
-      setVbfAnnualResult("Not enough LINK to reward stakers! LINK price should go up.");
+      setVbfAnnualResult(vbfAnnualStakingRewards.toLocaleString() + " LINK, that's more than the current circulating supply.");
     }
   }
 
@@ -66,7 +69,7 @@ function App() {
     if (ffAnnualStakingRewards < remainingCirculatingSupply) {
       setFfAnnualResult(ffAnnualStakingRewards.toLocaleString() + " LINK");
     } else {
-      setFfAnnualResult("Not enough LINK to reward stakers! LINK price should go up.");
+      setFfAnnualResult(ffAnnualStakingRewards.toLocaleString() + " LINK, that's more than the current circulating supply.");
     }
   }
 
@@ -106,20 +109,8 @@ const [anchorEl, setAnchorEl] = React.useState(null);
     <div className="home-container">
       <div className="home-container01">
         <h1 className="home-text">LINKULATOR</h1>
-      </div>
-
-      
-
-
-
-
-
-      <div className="container-main">
-        <div className="textrow">
-          <span className="label">LINK supply:</span>
-          <span className="valuesmall">{totalSupply.toLocaleString()}</span>
-          <div>
-        <InfoIcon aria-describedby={id} color="disabled" fontSize='small' onClick={handleClick}/>
+        <div>
+        <InfoIcon  aria-describedby={id} color="disabled" fontSize='small' onClick={handleClick}/>
         <Popover
           id={id}
           open={open}
@@ -134,6 +125,7 @@ const [anchorEl, setAnchorEl] = React.useState(null);
             horizontal: 'right',
           }}
         > 
+          <Typography variant="body1" sx={{ p: 1 }}>This is a calculator, not a financial advisor.</Typography>
           <Typography variant="body2" sx={{ p: 1 }}>Data is sourced from:</Typography>
 
           <Link href="https://docs.chain.link/ccip/billing#network-fee-table" target="_blank" rel="noreferrer" variant="body2" sx={{ p: 1 }}>Chainlink CCIP billing</Link>
@@ -142,12 +134,26 @@ const [anchorEl, setAnchorEl] = React.useState(null);
           <br></br>
           <Link href="https://www.dtcc.com/annuals/2023/performance/" target="_blank" rel="noreferrer" variant="body2" sx={{ p: 1 }}>DTCC performance dashboard</Link>
           
-          <Typography variant="body2" sx={{ p: 1 }}>Thanks for reading this.</Typography>
+          <Typography variant="body2" sx={{ p: 1 }}>Have fun :)</Typography>
         </Popover>
     </div>
+        
+      </div>
+
+      
+
+
+
+
+
+      <div className="container-main">
+        <div className="textrow">
+          <span className="label">Total LINK supply:</span>
+          <span className="value">{totalSupply.toLocaleString()}</span>
+
         </div>
         <div className="textrow altrow">
-          <span className="label">CCIP minimum flat fee (FF):</span>
+          <span className="label">CCIP flat fee (FF):</span>
           <span className="value">$0.225</span>
         </div>
         <div className="textrow">
@@ -180,7 +186,7 @@ const [anchorEl, setAnchorEl] = React.useState(null);
           <div className="slidertest">
             <Box sx={{ width: sliderWidth, height: 26}}>
               <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
-                <Slider aria-label="linkPrice" value={linkPrice} onChange={(event, newValue) => {setLinkPrice(newValue); updateFF(); updateVBF()}} min={0} max= {1000} size="small"/>
+                <Slider aria-label="linkPrice" value={linkPrice} onChange={(event, newValue) => {setLinkPrice(newValue); updateFF(); updateVBF()}} min={1} max= {10000} size="small"/>
               </Stack>   
             </Box>
           </div>
@@ -237,7 +243,7 @@ const [anchorEl, setAnchorEl] = React.useState(null);
  
         <div className="altrowtall">
         <div className="row">
-        <span className="label">Transactions via CCIP:</span>
+        <span className="label">SWIFT & DTCC through CCIP:</span>
           <span className="slidervaluetest">{ccipFlow}%</span>
         </div>
         <div className="row">
@@ -269,12 +275,12 @@ const [anchorEl, setAnchorEl] = React.useState(null);
 
 
         <div className="textrow altrow">
-          <span className="label">Annual revenue (FF):</span>
-          <span className="value">${totalFlatFeeRevenue.toLocaleString()} = {flatFeeRewardRate.toLocaleString()}% reward</span>
+          <span className="label">Annual revenue from {amountStaked.toLocaleString()} LINK staked (FF):</span>
+          <span className="value">{totalFlatFeeRevenuInLink.toLocaleString()} LINK or ${totalFlatFeeRevenue.toLocaleString()} = {flatFeeRewardRate.toLocaleString()}% reward</span>
         </div>
         <div className="textrow">
-          <span className="label">Annual revenue (VBF):</span>
-          <span className="value">${totalVariableFeeRevenue.toLocaleString()} = {variableFeeRewardRate.toLocaleString()}% reward</span>
+          <span className="label">Annual revenue from {amountStaked.toLocaleString()} LINK staked (VBF):</span>
+          <span className="value">{totalVariableFeeRevenueInLink.toLocaleString()} LINK or ${totalVariableFeeRevenue.toLocaleString()} = {variableFeeRewardRate.toLocaleString()}% reward</span>
         </div>
 
         <div className="textrow altrow">
