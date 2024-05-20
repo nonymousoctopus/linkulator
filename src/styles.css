@@ -1,0 +1,174 @@
+.container-main {
+    width: auto;
+    max-width: 550px;
+    height: auto;
+    border-radius: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #FAFBFD88;
+    box-shadow: 5px 5px 20px 10px lightgray;
+}
+
+.row {
+    width: 100%;
+    height: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+    display: flex;
+    align-items:center;
+    justify-content: left;
+}
+.textrow {
+    width: 100%;
+    height: auto;
+    padding-left: 8px;
+    padding-right: 8px;
+    display: flex;
+    align-items:center;
+    justify-content: left;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.label {
+    width: 45%;
+    display: flex;
+    justify-content: left;
+    padding-right: 16px;
+    font-style: normal;
+    font-family: "Exo 2";
+    font-weight: 500;
+}
+.value {
+    width: 55%;
+    display: flex;
+    justify-content: left;
+    padding-right: 16px;
+    font-style: normal;
+    font-family: "Exo 2";
+    font-weight: 300;
+}
+.valuesmall {
+  width: 50%;
+  display: flex;
+  justify-content: left;
+  padding-right: 16px;
+  font-style: normal;
+  font-family: "Exo 2";
+  font-weight: 300;
+}
+.slider {
+    width: 27%;
+    padding-top: 6.2px;
+    padding-top: 6.2px;
+}
+.slidervalue {
+    width: 27%;
+    display: flex;
+    justify-content: left;
+    font-style: normal;
+    font-family: "Exo 2";
+    font-weight: 300;
+}
+.slidertest {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 6.2px;
+  padding-bottom: 6.2px;
+}
+.slidervaluetest {
+  width: 55%;
+  display: flex;
+  justify-content: left;
+  font-style: normal;
+  font-family: "Exo 2";
+  font-weight: 300;
+}
+.altrow {
+  background-color:#385BCC11;
+  border-radius: 4px;
+}
+.altrowtall {
+  background-color:#385BCC11;
+  border-radius: 4px;
+  padding-top: 6.2px;
+}
+.rowtall {
+
+
+  padding-top: 6.2px;
+}
+
+
+.home-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #fffff 0%, #F0F4FE 100%)
+  }
+  .home-container01 {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .home-text {
+    color: #385BCC;
+    margin-top: var(--dl-space-space-twounits);
+    text-align: center;
+    font-family: "Exo 2";
+    margin-bottom: var(--dl-space-space-twounits);
+  }
+
+  .dtcc {
+    color: #145448;
+  }
+  .swift {
+    color: #333D3E;
+  }
+
+  .info {
+    padding-top: 16px;
+  }
+  
+
+
+  :root {
+    --dl-size-size-large: 144px;
+    --dl-size-size-small: 48px;
+    --dl-size-size-medium: 96px;
+    --dl-size-size-xlarge: 192px;
+    --dl-size-size-xsmall: 16px;
+    --dl-space-space-unit: 16px;
+    --dl-size-size-xxlarge: 288px;
+    --dl-size-size-maxwidth: 1400px;
+    --dl-color-theme-accent1: #F3E8E2;
+    --dl-color-theme-accent2: #D8BFAF;
+    --dl-radius-radius-round: 50%;
+    --dl-color-theme-primary1: #D1510A;
+    --dl-color-theme-primary2: #923A06;
+    --dl-space-space-halfunit: 8px;
+    --dl-space-space-sixunits: 96px;
+    --dl-space-space-twounits: 32px;
+    --dl-radius-radius-radius2: 2px;
+    --dl-radius-radius-radius4: 4px;
+    --dl-radius-radius-radius8: 8px;
+    --dl-space-space-fiveunits: 80px;
+    --dl-space-space-fourunits: 64px;
+    --dl-color-theme-secondary1: #F3E8E2;
+    --dl-color-theme-secondary2: #E0D1CB;
+    --dl-space-space-threeunits: 48px;
+    --dl-color-theme-neutral-dark: #191818;
+    --dl-radius-radius-cardradius: 8px;
+    --dl-color-theme-neutral-light: #FBFAF9;
+    --dl-radius-radius-imageradius: 8px;
+    --dl-radius-radius-inputradius: 24px;
+    --dl-radius-radius-buttonradius: 24px;
+    --dl-space-space-oneandhalfunits: 24px;
+  }
+  
